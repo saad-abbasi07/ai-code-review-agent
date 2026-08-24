@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+gitpython
+google-genai
+python-dotenv
+bandit
+ruff
