@@ -1,10 +1,26 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 from github_reader import clone_repo
 from code_reader import read_code
 from ai_reviewer import review_code
 from static_analyzer import analyze_python
 
+
 app = FastAPI(title="AI Code Review Agent")
+
+
+# CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "https://ai-code-review-frontend.vercel.app",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
